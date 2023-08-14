@@ -6,16 +6,16 @@ resource "aws_security_group" "allows_redis" {
 
   ingress {
     description      = "Allow redis from default VPC"
-    from_port        = 6379
-    to_port          = 6379
+    from_port        = var.REDIS_PORT
+    to_port          = var.REDIS_PORT
     protocol         = "tcp"
     cidr_blocks      = [data.terraform_remote_state.vpc.outputs.DEFAULT_VPC_CIDR]
   }
 
   ingress {
     description      = "Allow redis from default VPC"
-    from_port        = 6379
-    to_port          = 6379
+    from_port        = var.REDIS_PORT
+    to_port          = var.REDIS_PORT
     protocol         = "tcp"
     cidr_blocks      = [data.terraform_remote_state.vpc.outputs.VPC_CIDR]
   }
